@@ -1,0 +1,14 @@
+[project]
+name = "poselib-v2"
+version = "2025.05.25"
+description = "PoseLib-v2"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "matplotlib",
+]
+
+[build-system]
+requires = ["setuptools", "wheel", "toml"]
+build-backend = "setuptools.build_meta"
