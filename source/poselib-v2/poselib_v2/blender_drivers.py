@@ -191,15 +191,15 @@ def construct_skeleton_tree():
             "arm_left_shoulder_yaw",      # 9
             "arm_left_elbow_pitch",       # 10
             "arm_left_wrist_yaw",         # 11
-            "arm_left_wrist_pitch",       # 12
             "arm_left_wrist_roll",        # 13
+            "arm_left_wrist_pitch",       # 12
             "arm_right_shoulder_pitch",   # 14
             "arm_right_shoulder_roll",    # 15
             "arm_right_shoulder_yaw",     # 16
             "arm_right_elbow_pitch",      # 17
             "arm_right_wrist_yaw",        # 18
-            "arm_right_wrist_pitch",      # 19
             "arm_right_wrist_roll",       # 20
+            "arm_right_wrist_pitch",      # 19
             "leg_left_hip_pitch",         # 21
             "leg_left_hip_roll",          # 22
             "leg_left_hip_yaw",           # 23
@@ -228,15 +228,15 @@ def construct_skeleton_tree():
             "arm_left_upper_yaw",         # 9
             "arm_left_forearm_pitch",     # 10
             "arm_left_hand_yaw",          # 11
-            "arm_left_hand_pitch",        # 12
-            "arm_left_hand_roll",         # 13
+            "arm_left_hand_roll",         # 12
+            "arm_left_hand_pitch",        # 13
             "arm_right_upper_pitch",      # 14
             "arm_right_upper_roll",       # 15
             "arm_right_upper_yaw",        # 16
             "arm_right_forearm_pitch",    # 17
             "arm_right_hand_yaw",         # 18
-            "arm_right_hand_pitch",       # 19
-            "arm_right_hand_roll",        # 20
+            "arm_right_hand_roll",        # 19
+            "arm_right_hand_pitch",       # 20
             "leg_left_thigh_pitch",       # 21
             "leg_left_thigh_roll",        # 22
             "leg_left_thigh_yaw",         # 23
