@@ -139,7 +139,8 @@ def build_motion_data(source_armature: bpy_types.Object, mapping: dict, scaling_
     body_positions[:, :, 0] -= offset_x
     body_positions[:, :, 1] -= offset_y
     
-    # TODO: what is this???
+    # in Blender, scaling the armature does not scale the retreived bone position, so we need to
+    # manually apply the scaling to the sampled data here.
     body_positions[:] *= scaling_ratio
     
     # calculate velocities
