@@ -96,7 +96,7 @@ def build_motion_data(source_armature: bpy_types.Object, mapping: dict, scaling_
     n_body = len(link_names)
     
     # prepare motion data array
-    fps = np.array([fps_exact], dtype=np.int64)
+    fps = np.array([fps_exact], dtype=np.int64)  # this needs to be int64
     dof_names = np.array([])
     body_names = np.array(link_names)
     dof_positions = np.zeros((n_frames, n_dof), dtype=np.float32)
@@ -141,6 +141,9 @@ def build_motion_data(source_armature: bpy_types.Object, mapping: dict, scaling_
     
     # TODO: what is this???
     body_positions[:] *= scaling_ratio
+    
+    # calculate velocities
+    body_linear_velocities[1:] = np.diff(body_positions, axis=0) / (1 / fps_exact)
     
     print(f"Done generating {n_frames} frames ({n_frames / fps_exact:.2f} seconds)")
 
