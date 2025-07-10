@@ -1,32 +1,35 @@
 
 
+# only thing need to be cautious is that the first entry must be the root.
+
 
 class UnitreeG1Mapping:
     actorcore = {
-        "left_shoulder"     : ("CC_Base_L_Clavicle",    lambda b: b.tail),
-        "left_elbow"        : ("CC_Base_L_Forearm",     lambda b: b.head),
-        "left_wrist"        : ("CC_Base_L_Hand",        lambda b: b.head),
-        "left_hand"         : ("CC_Base_L_Hand",        lambda b: b.tail),
-        "right_shoulder"    : ("CC_Base_R_Clavicle",    lambda b: b.tail),
-        "right_elbow"       : ("CC_Base_R_Forearm",     lambda b: b.head),
-        "right_wrist"       : ("CC_Base_R_Hand",        lambda b: b.head),
-        "right_hand"        : ("CC_Base_R_Hand",        lambda b: b.tail),
-        "pelvis"            : ("CC_Base_Pelvis",        lambda b: b.head),
-        "chest"             : ("CC_Base_Spine02",       lambda b: b.head),
-        "head"              : ("CC_Base_Head",          lambda b: b.tail),
-        "left_hip"          : ("CC_Base_L_Thigh",       lambda b: b.head),
-        "left_knee"         : ("CC_Base_L_Calf",        lambda b: b.head),
-        "left_ankle"        : ("CC_Base_L_Foot",        lambda b: b.head),
-        "left_foot"         : ("CC_Base_L_Foot",        lambda b: b.tail),
-        "right_hip"         : ("CC_Base_R_Thigh",       lambda b: b.head),
-        "right_knee"        : ("CC_Base_R_Calf",        lambda b: b.head),
-        "right_ankle"       : ("CC_Base_R_Foot",        lambda b: b.head),
-        "right_foot"        : ("CC_Base_R_Foot",        lambda b: b.tail),
+        "pelvis"                    : ("CC_Base_Pelvis",        lambda b: b.head),
+        "left_shoulder_roll_link"   : ("CC_Base_L_Clavicle",    lambda b: b.tail),
+        "left_elbow_link"           : ("CC_Base_L_Forearm",     lambda b: b.head),
+        "left_wrist_pitch_link"     : ("CC_Base_L_Hand",        lambda b: b.head),
+        "left_rubber_hand"          : ("CC_Base_L_Hand",        lambda b: b.tail),
+        "right_shoulder_roll_link"  : ("CC_Base_R_Clavicle",    lambda b: b.tail),
+        "right_elbow_link"          : ("CC_Base_R_Forearm",     lambda b: b.head),
+        "right_wrist_pitch_link"    : ("CC_Base_R_Hand",        lambda b: b.head),
+        "right_rubber_hand"         : ("CC_Base_R_Hand",        lambda b: b.tail),
+        "torso_link"                : ("CC_Base_Spine02",       lambda b: b.head),
+        "head_link"                 : ("CC_Base_Head",          lambda b: b.tail),
+        "left_hip_roll_link"        : ("CC_Base_L_Thigh",       lambda b: b.head),
+        "left_knee_link"            : ("CC_Base_L_Calf",        lambda b: b.head),
+        "left_ankle_pitch_link"     : ("CC_Base_L_Foot",        lambda b: b.head),
+        "left_ankle_roll_link"      : ("CC_Base_L_Foot",        lambda b: b.tail),
+        "right_hip_roll_link"       : ("CC_Base_R_Thigh",       lambda b: b.head),
+        "right_knee_link"           : ("CC_Base_R_Calf",        lambda b: b.head),
+        "right_ankle_pitch_link"    : ("CC_Base_R_Foot",        lambda b: b.head),
+        "right_ankle_roll_link"     : ("CC_Base_R_Foot",        lambda b: b.tail),
     }
 
 
 class AirDraftMapping:
     mixamo = {
+        "pelvis"            : ("mixamorig:Hips",            lambda b: b.head),
         "left_shoulder"     : ("mixamorig:LeftArm",         lambda b: b.head),
         "left_elbow"        : ("mixamorig:LeftForeArm",     lambda b: b.head),
         "left_hand"         : ("mixamorig:LeftHand",        lambda b: b.head),
@@ -39,12 +42,12 @@ class AirDraftMapping:
         "right_hip"         : ("mixamorig:RightUpLeg",      lambda b: b.head),
         "right_knee"        : ("mixamorig:RightLeg",        lambda b: b.head),
         "right_foot"        : ("mixamorig:RightToeBase",    lambda b: b.head),
-        "pelvis"            : ("mixamorig:Hips",            lambda b: b.head),
         "chest"             : ("mixamorig:Spine1",          lambda b: b.head),
         "head"              : ("mixamorig:Head",            lambda b: b.head),
     }
 
     mmd_yyb = {
+        "pelvis"            : ("腰",        lambda b: b.head),
         "left_shoulder"     : ("腕.L",      lambda b: b.head),
         "left_elbow"        : ("腕.L",      lambda b: b.tail),
         "left_hand"         : ("ひじ.L",    lambda b: b.tail),
@@ -57,7 +60,6 @@ class AirDraftMapping:
         "right_hip"         : ("足.R",      lambda b: b.head),
         "right_knee"        : ("足.R",      lambda b: b.tail),
         "right_foot"        : ("ひざ.R",    lambda b: b.tail),
-        "pelvis"            : ("腰",        lambda b: b.head),
         "chest"             : ("上半身",    lambda b: b.head),
         "head"              : ("頭",        lambda b: b.head),
     }
