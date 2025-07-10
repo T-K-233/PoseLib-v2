@@ -46,13 +46,13 @@ This library uses the motion file format defined in IsaacLab [MotionLoader](http
 
 Each motion file is a numpy dictionary with the following fields. Here, we assume the robot has `D` number of joints and `B` number of linkages, and the motion file has `F` frames.
 
-- `fps`: a floating point number representing the frame rate of the motion data.
+- `fps`: an int64 number representing the frame rate of the motion data.
 - `dof_names`: a list of length `D` containing the names of each joint.
 - `body_names`: a list of length `B` containing the names of each link.
 - `dof_positions`: a numpy array of shape `(F, D)` containing the rotational positions of the joints in `rad`.
 - `dof_velocities`: a numpy array of shape `(F, D)` containing the rotational (angular) velocities of the joints in `rad/s`.
 - `body_positions`: a numpy array of shape `(F, B, 3)` containing the locations of each body in **world frame**, in `m`.
-- `body_rotations`: a numpy array of shape `(F, B, 4)` containing the rotations of each body in **world frame**, in quaternion.
+- `body_rotations`: a numpy array of shape `(F, B, 4)` containing the rotations of each body in **world frame**, in quaternion `(qw, qx, qy, qz)`.
 - `body_linear_velocities`: a numpy array of shape `(F, B, 3)` containing the linear velocities of each body in **world frame**, in `m/s`.
 - `body_angular_velocities`: a numpy array of shape `(F, B, 3)` containing the rotational (angular) velocities of each body in **world frame**, in `rad/s`.
 
