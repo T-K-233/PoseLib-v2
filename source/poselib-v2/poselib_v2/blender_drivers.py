@@ -92,7 +92,7 @@ def set_scene_fps(fps: int) -> None:
     Set the scene FPS.
     """
     C.scene.render.fps = fps
-    C.scene.render.fps_base = fps
+    C.scene.render.fps_base = 1.0
 
 
 def set_scene_animation_range(start: int, end: int) -> None:
