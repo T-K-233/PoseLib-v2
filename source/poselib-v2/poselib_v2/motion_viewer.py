@@ -22,7 +22,14 @@ class MotionViewer:
     Helper class to visualize motion data from NumPy-file format.
     """
 
-    def __init__(self, motion_file: str, device: torch.device | str = "cpu", render_scene: bool = False) -> None:
+    def __init__(
+        self,
+        motion_file: str,
+        render_scene: bool = False,
+        show_velocity: bool = False,
+        show_frames: list[str] = [],
+        device: torch.device | str = "cpu",
+    ) -> None:
         """Load a motion file and initialize the internal variables.
 
         Args:
@@ -37,6 +44,12 @@ class MotionViewer:
         self._figure = None
         self._figure_axes = None
         self._render_scene = render_scene
+        self._show_velocity = show_velocity
+        self._show_frames = show_frames
+
+        # drawing parameters
+        self._velocity_scale = 0.2  # Scale factor for velocity arrows
+        self._frame_length = 0.1  # Length of the coordinate frame axes
 
         # load motions
         self._motion_loader = MotionLoader(motion_file=motion_file, device=device)
@@ -44,6 +57,8 @@ class MotionViewer:
         self._num_frames = self._motion_loader.num_frames
         self._current_frame = 0
         self._body_positions = self._motion_loader.body_positions.cpu().numpy()
+        self._body_linear_velocities = self._motion_loader.body_linear_velocities.cpu().numpy()
+        self._body_rotations = self._motion_loader.body_rotations.cpu().numpy()
 
         print("\nBody")
         for i, name in enumerate(self._motion_loader.body_names):
@@ -51,14 +66,78 @@ class MotionViewer:
             maximum = np.max(self._body_positions[:, i], axis=0).round(decimals=2)
             print(f"  |-- [{name}] minimum position: {minimum}, maximum position: {maximum}")
 
+    def _quaternion_to_rotation_matrix(self, q):
+        """Convert quaternion (w, x, y, z) to rotation matrix"""
+        w, x, y, z = q
+        return np.array([
+            [1 - 2*y*y - 2*z*z, 2*(x*y - w*z), 2*(x*z + w*y)],
+            [2*(x*y + w*z), 1 - 2*x*x - 2*z*z, 2*(y*z - w*x)],
+            [2*(x*z - w*y), 2*(y*z + w*x), 1 - 2*x*x - 2*y*y]
+        ])
+
     def _drawing_callback(self, frame: int) -> None:
         """Drawing callback called each frame"""
         # get current motion frame
         # get data
         vertices = self._body_positions[self._current_frame]
+        velocities = self._body_linear_velocities[self._current_frame]
+        rotations = self._body_rotations[self._current_frame]
         # draw skeleton state
         self._figure_axes.clear()
+
+        # Draw keypoints as dots
         self._figure_axes.scatter(*vertices.T, color="black", depthshade=False)
+
+        # Draw coordinate frames for specified bodies
+        for name in self._show_frames:
+            idx = self._motion_loader.body_names.index(name)
+            frame_pos = vertices[idx]
+            quat = rotations[idx]  # (w, x, y, z)
+
+            # Convert quaternion to rotation matrix
+            R = self._quaternion_to_rotation_matrix(quat)
+
+            # Define unit vectors for X, Y, Z axes
+            x_axis = np.array([1, 0, 0])
+            y_axis = np.array([0, 1, 0])
+            z_axis = np.array([0, 0, 1])
+
+            # Rotate the axes using the rotation matrix
+            x_rotated = R @ x_axis
+            y_rotated = R @ y_axis
+            z_rotated = R @ z_axis
+
+            # Scale the rotated axes
+            x_rotated *= self._frame_length
+            y_rotated *= self._frame_length
+            z_rotated *= self._frame_length
+
+            # Draw X-axis (red)
+            self._figure_axes.quiver(
+                frame_pos[0], frame_pos[1], frame_pos[2],
+                x_rotated[0], x_rotated[1], x_rotated[2],
+                color='red', arrow_length_ratio=0.2)
+            # Draw Y-axis (green)
+            self._figure_axes.quiver(
+                frame_pos[0], frame_pos[1], frame_pos[2],
+                y_rotated[0], y_rotated[1], y_rotated[2],
+                color='green', arrow_length_ratio=0.2)
+            # Draw Z-axis (blue)
+            self._figure_axes.quiver(
+                frame_pos[0], frame_pos[1], frame_pos[2],
+                z_rotated[0], z_rotated[1], z_rotated[2],
+                color='blue', arrow_length_ratio=0.2)
+
+        # Draw velocity vectors for all points
+        for i, (pos, vel) in enumerate(zip(vertices, velocities)):
+            # Only draw velocity if it's not zero
+            if np.linalg.norm(vel) > 1e-6:
+                self._figure_axes.quiver(
+                    pos[0], pos[1], pos[2],
+                    vel[0] * self._velocity_scale, vel[1] * self._velocity_scale, vel[2] * self._velocity_scale,
+                    color="orange", alpha=0.7, arrow_length_ratio=0.3
+                )
+
         # adjust exes according to motion view
         # - scene
         if self._render_scene:
@@ -105,4 +184,3 @@ class MotionViewer:
             interval=1000 * self._motion_loader.dt,
         )
         plt.show()
-
