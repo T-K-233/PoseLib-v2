@@ -25,6 +25,27 @@ class UnitreeG1Mapping:
         "torso_link"                : ("CC_Base_Spine02",       lambda b: b.head),
         "head_link"                 : ("CC_Base_Head",          lambda b: b.tail),
     }
+    meshcapade = {
+        "pelvis"                    : ("pelvis",        lambda b: b.head),
+        "left_shoulder_roll_link"   : ("upperarm_l",    lambda b: b.head),
+        "left_elbow_link"           : ("lowerarm_l",    lambda b: b.head),
+        "left_wrist_pitch_link"     : ("hand_l",        lambda b: b.head),
+        "left_rubber_hand"          : ("hand_l",        lambda b: b.tail),
+        "right_shoulder_roll_link"  : ("upperarm_r",    lambda b: b.head),
+        "right_elbow_link"          : ("lowerarm_r",    lambda b: b.head),
+        "right_wrist_pitch_link"    : ("hand_r",        lambda b: b.head),
+        "right_rubber_hand"         : ("hand_r",        lambda b: b.tail),
+        "torso_link"                : ("torso",         lambda b: b.head),
+        "head_link"                 : ("head",          lambda b: b.head),
+        "left_hip_roll_link"        : ("thigh_l",       lambda b: b.head),
+        "left_knee_link"            : ("calf_l",        lambda b: b.head),
+        "left_ankle_pitch_link"     : ("foot_l",        lambda b: b.head),
+        "left_ankle_roll_link"      : ("ball_l",        lambda b: b.head),
+        "right_hip_roll_link"       : ("thigh_r",       lambda b: b.head),
+        "right_knee_link"           : ("calf_r",        lambda b: b.head),
+        "right_ankle_pitch_link"    : ("foot_r",        lambda b: b.head),
+        "right_ankle_roll_link"     : ("ball_r",        lambda b: b.head),
+    }
 
 
 class AirDraftMapping:
