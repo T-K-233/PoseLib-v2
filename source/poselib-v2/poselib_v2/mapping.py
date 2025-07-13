@@ -5,25 +5,23 @@
 
 class UnitreeG1Mapping:
     actorcore = {
-        "pelvis"                    : ("CC_Base_Pelvis",        lambda b: b.head),
-        "left_shoulder_roll_link"   : ("CC_Base_L_Clavicle",    lambda b: b.tail),
-        "left_elbow_link"           : ("CC_Base_L_Forearm",     lambda b: b.head),
-        "left_wrist_pitch_link"     : ("CC_Base_L_Hand",        lambda b: b.head),
-        "left_rubber_hand"          : ("CC_Base_L_Hand",        lambda b: b.tail),
-        "right_shoulder_roll_link"  : ("CC_Base_R_Clavicle",    lambda b: b.tail),
-        "right_elbow_link"          : ("CC_Base_R_Forearm",     lambda b: b.head),
-        "right_wrist_pitch_link"    : ("CC_Base_R_Hand",        lambda b: b.head),
-        "right_rubber_hand"         : ("CC_Base_R_Hand",        lambda b: b.tail),
-        "left_hip_roll_link"        : ("CC_Base_L_Thigh",       lambda b: b.head),
-        "left_knee_link"            : ("CC_Base_L_Calf",        lambda b: b.head),
-        "left_ankle_pitch_link"     : ("CC_Base_L_Foot",        lambda b: b.head),
-        "left_ankle_roll_link"      : ("CC_Base_L_Foot",        lambda b: b.tail),
-        "right_hip_roll_link"       : ("CC_Base_R_Thigh",       lambda b: b.head),
-        "right_knee_link"           : ("CC_Base_R_Calf",        lambda b: b.head),
-        "right_ankle_pitch_link"    : ("CC_Base_R_Foot",        lambda b: b.head),
-        "right_ankle_roll_link"     : ("CC_Base_R_Foot",        lambda b: b.tail),
-        "torso_link"                : ("CC_Base_Spine02",       lambda b: b.head),
-        "head_link"                 : ("CC_Base_Head",          lambda b: b.tail),
+        "pelvis"                    : ("CC_Base_Pelvis",        lambda b: b.head),  # 0
+        "left_shoulder_roll_link"   : ("CC_Base_L_Clavicle",    lambda b: b.tail),  # 1
+        "left_elbow_link"           : ("CC_Base_L_Forearm",     lambda b: b.head),  # 2
+        "left_wrist_pitch_link"     : ("CC_Base_L_Hand",        lambda b: b.head),  # 3
+        "left_rubber_hand"          : ("CC_Base_L_Hand",        lambda b: b.tail),  # 4
+        "right_shoulder_roll_link"  : ("CC_Base_R_Clavicle",    lambda b: b.tail),  # 5
+        "right_elbow_link"          : ("CC_Base_R_Forearm",     lambda b: b.head),  # 6
+        "right_wrist_pitch_link"    : ("CC_Base_R_Hand",        lambda b: b.head),  # 7
+        "right_rubber_hand"         : ("CC_Base_R_Hand",        lambda b: b.tail),  # 8
+        "left_hip_roll_link"        : ("CC_Base_L_Thigh",       lambda b: b.head),  # 9
+        "left_knee_link"            : ("CC_Base_L_Calf",        lambda b: b.head),  # 10
+        "left_ankle_roll_link"      : ("CC_Base_L_Foot",        lambda b: b.head),  # 11
+        "right_hip_roll_link"       : ("CC_Base_R_Thigh",       lambda b: b.head),  # 12
+        "right_knee_link"           : ("CC_Base_R_Calf",        lambda b: b.head),  # 13
+        "right_ankle_roll_link"     : ("CC_Base_R_Foot",        lambda b: b.head),  # 14
+        "torso_link"                : ("CC_Base_Spine02",       lambda b: b.head),  # 15
+        "head_link"                 : ("CC_Base_Head",          lambda b: b.tail),  # 16
     }
     meshcapade = {
         "pelvis"                    : ("pelvis",        lambda b: b.head),

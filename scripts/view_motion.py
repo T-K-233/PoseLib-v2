@@ -24,7 +24,7 @@ args, _ = parser.parse_known_args()
 # https://matplotlib.org/stable/users/explain/figure/backends.html#interactive-backends
 matplotlib.use(args.matplotlib_backend)
 
-frame_list = ["pelvis", "left_rubber_hand", "right_rubber_hand"]
+frame_list = ["pelvis", "left_rubber_hand", "right_rubber_hand", "left_ankle_roll_link", "right_ankle_roll_link"]
 
 viewer = MotionViewer(
     args.file,
