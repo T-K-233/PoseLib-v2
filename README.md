@@ -59,3 +59,9 @@ Each motion file is a numpy dictionary with the following fields. Here, we assum
 The converted motion file is targeted for one particular robot skeleton structure. 
 
 <!-- To ensure best performance, also make sure that the frame rate matches the training environment policy update rate to avoid interpolations. -->
+
+
+## Working with MMD
+
+To import and convert MMD motions in Blender, the [MMD Tools](https://extensions.blender.org/add-ons/mmd-tools/) plugin needs to be installed.
+

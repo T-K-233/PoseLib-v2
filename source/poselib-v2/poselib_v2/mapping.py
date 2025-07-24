@@ -44,6 +44,23 @@ class UnitreeG1Mapping:
         "right_ankle_pitch_link"    : ("foot_r",        lambda b: b.head),
         "right_ankle_roll_link"     : ("ball_r",        lambda b: b.head),
     }
+    mmd_yyb = {
+        "pelvis"                    : ("腰",        lambda b: b.head),  # 0
+        "left_shoulder_roll_link"   : ("腕.L",      lambda b: b.head),  # 1
+        "left_elbow_link"           : ("腕.L",      lambda b: b.tail),  # 2
+        "left_rubber_hand"          : ("ひじ.L",    lambda b: b.tail),  # 3
+        "right_shoulder_roll_link"  : ("腕.R",      lambda b: b.head),  # 4
+        "right_elbow_link"          : ("腕.R",      lambda b: b.tail),  # 5
+        "right_rubber_hand"         : ("ひじ.R",    lambda b: b.tail),  # 6
+        "torso_link"                : ("上半身",    lambda b: b.head),  # 7
+        "left_hip_roll_link"        : ("足.L",      lambda b: b.head),  # 8
+        "left_knee_link"            : ("足.L",      lambda b: b.tail),  # 9
+        "left_ankle_roll_link"      : ("ひざ.L",    lambda b: b.tail),  # 10
+        "right_hip_roll_link"       : ("足.R",      lambda b: b.head),  # 11
+        "right_knee_link"           : ("足.R",      lambda b: b.tail),  # 12
+        "right_ankle_roll_link"     : ("ひざ.R",    lambda b: b.tail),  # 13
+        "head_link"                 : ("頭",        lambda b: b.head),  # 14
+    }
 
 
 class AirDraftMapping:
@@ -64,7 +81,6 @@ class AirDraftMapping:
         "chest"             : ("mixamorig:Spine1",          lambda b: b.head),
         "head"              : ("mixamorig:Head",            lambda b: b.head),
     }
-
     mmd_yyb = {
         "pelvis"            : ("腰",        lambda b: b.head),
         "left_shoulder"     : ("腕.L",      lambda b: b.head),
