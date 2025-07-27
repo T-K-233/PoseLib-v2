@@ -2,6 +2,8 @@
 
 **Note** This library is going to be deprecated soon. Please see [here](https://github.com/T-K-233/MikuMotionTools) for replacement.
 
+---
+
 Library for converting and manipulating robot armature motions.
 
 
